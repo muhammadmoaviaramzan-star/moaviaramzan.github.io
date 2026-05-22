@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moavia Ramzan — Portfolio</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --accent:#2563eb;
+    --accent-light:#dbeafe;
+    --bg:#0f172a;
+    --bg2:#1e293b;
+    --bg3:#334155;
+    --text:#f1f5f9;
+    --text2:#94a3b8;
+    --border:#334155;
+    --card:#1e293b;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:rgba(15,23,42,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:100;padding:0 5%}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+  .logo{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.3px}
+  .logo span{color:var(--accent)}
+  nav ul{list-style:none;display:flex;gap:24px}
+  nav a{color:var(--text2);text-decoration:none;font-size:13px;transition:color .2s}
+  nav a:hover{color:var(--text)}
+
+  /* SECTIONS */
+  section{padding:80px 5%;max-width:1100px;margin:0 auto}
+  .section-wrap{padding-top:56px}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 5% 60px}
+  .hero-inner{max-width:700px}
+  .badge{display:inline-block;background:var(--bg2);border:1px solid var(--border);color:var(--text2);font-size:12px;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.5px}
+  h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:16px}
+  h1 span{color:var(--accent)}
+  .hero-sub{font-size:16px;color:var(--text2);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+  .hero-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#1d4ed8}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+  .contact-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .contact-item{display:flex;align-items:center;gap:6px;color:var(--text2);font-size:12px}
+  .dot{width:4px;height:4px;border-radius:50%;background:var(--text2)}
+
+  /* SECTION HEADING */
+  .sec-head{margin-bottom:40px}
+  .sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:8px}
+  .sec-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-0.5px}
+  .divider{width:40px;height:3px;background:var(--accent);border-radius:2px;margin-top:10px}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .about-text{color:var(--text2);font-size:15px;line-height:1.8}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+  .stat-num{font-size:28px;font-weight:800;color:var(--accent)}
+  .stat-label{font-size:12px;color:var(--text2);margin-top:4px}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+  .skill-card h3{font-size:14px;font-weight:700;margin-bottom:16px;color:var(--text)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:var(--bg3);color:var(--text2);font-size:12px;padding:5px 12px;border-radius:6px;border:1px solid var(--border)}
+  .tag:hover{border-color:var(--accent);color:var(--accent);cursor:default}
+
+  /* EXPERIENCE */
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--border)}
+  .exp-item{position:relative;margin-bottom:36px}
+  .exp-item::before{content:'';position:absolute;left:-24px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+  .exp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+  .exp-role{font-size:15px;font-weight:700}
+  .exp-date{font-size:12px;color:var(--text2);background:var(--bg3);padding:3px 10px;border-radius:6px;white-space:nowrap}
+  .exp-company{color:var(--accent);font-size:13px;margin-bottom:12px;font-weight:600}
+  .exp-card ul{list-style:none;padding:0}
+  .exp-card li{font-size:13px;color:var(--text2);padding:4px 0 4px 16px;position:relative;line-height:1.6}
+  .exp-card li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:11px;top:5px}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .proj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s,transform .2s}
+  .proj-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .proj-icon{width:40px;height:40px;border-radius:10px;background:rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px}
+  .proj-title{font-size:15px;font-weight:700;margin-bottom:8px}
+  .proj-org{font-size:11px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+  .proj-desc{font-size:13px;color:var(--text2);line-height:1.7}
+
+  /* EDUCATION */
+  .edu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start}
+  .edu-icon{width:48px;height:48px;border-radius:12px;background:rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .edu-degree{font-size:16px;font-weight:700}
+  .edu-uni{color:var(--accent);font-size:13px;font-weight:600;margin:4px 0}
+  .edu-meta{font-size:12px;color:var(--text2);margin-bottom:8px}
+  .edu-note{font-size:13px;color:var(--text2)}
+  .cgpa{background:rgba(37,99,235,0.15);color:var(--accent);font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;display:inline-block;margin-left:8px}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .contact-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);transition:border-color .2s}
+  .contact-card:hover{border-color:var(--accent)}
+  .c-icon{width:36px;height:36px;border-radius:8px;background:rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .c-label{font-size:11px;color:var(--text2);margin-bottom:2px}
+  .c-val{font-size:13px;font-weight:600}
+
+  /* FOOTER */
+  footer{text-align:center;padding:32px 5%;color:var(--text2);font-size:13px;border-top:1px solid var(--border)}
+
+  @media(max-width:680px){
+    .about-grid,.skills-grid{grid-template-columns:1fr}
+    nav ul{display:none}
+    .hero{padding:100px 5% 40px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">M<span>.</span>Ramzan</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:moaviaramzann@gmail.com" class="btn btn-primary" style="font-size:12px;padding:7px 16px">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="section-wrap">
+<div class="hero">
+  <div class="hero-inner">
+    <div class="badge">📍 Lahore, Pakistan</div>
+    <h1>Moavia <span>Ramzan</span></h1>
+    <p class="hero-sub">Marketing &amp; Operations Enthusiast · Business Process Improvement · BBA Student at UMT</p>
+    <div class="hero-links">
+      <a href="#experience" class="btn btn-primary">View Experience</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-item">✉ moaviaramzann@gmail.com</span>
+      <span class="dot"></span>
+      <span class="contact-item">📞 +92-322-1072676</span>
+      <span class="dot"></span>
+      <span class="contact-item">🔗 linkedin: moavia-ramzan</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head">
+    <div class="sec-label">About Me</div>
+    <div class="sec-title">Who I Am</div>
+    <div class="divider"></div>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p class="about-text">Business Administration graduate with practical experience in marketing, operations, and business development. Proven ability in team coordination, workflow improvement, and customer engagement.</p>
+      <br>
+      <p class="about-text">Seeking a Graduate Trainee (GTO) or Management Trainee (MTO) role to drive operational efficiency and business growth. Fluent in English, Urdu, and Saraiki.</p>
+      <br>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span class="tag">🎓 UMT — BBA</span>
+        <span class="tag">🏏 Badminton</span>
+        <span class="tag">📊 P2P Merchant</span>
+        <span class="tag">🌐 English · Urdu · Saraiki</span>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Internships</div></div>
+      <div class="stat-card"><div class="stat-num">2.91</div><div class="stat-label">CGPA / 4.00</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Projects</div></div>
+      <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Languages</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head">
+    <div class="sec-label">Capabilities</div>
+    <div class="sec-title">Skills &amp; Tools</div>
+    <div class="divider"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>🤝 Interpersonal Skills</h3>
+      <div class="tags">
+        <span class="tag">Team Coordination</span>
+        <span class="tag">Client Relationship Management</span>
+        <span class="tag">Analytical Thinking</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Communication</span>
+        <span class="tag">Customer Engagement</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>💻 Technical Skills</h3>
+      <div class="tags">
+        <span class="tag">Market Research</span>
+        <span class="tag">Consumer Analysis</span>
+        <span class="tag">Digital Marketing</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">MS Office Suite</span>
+        <span class="tag">SEO &amp; Social Media</span>
+        <span class="tag">Email Marketing</span>
+        <span class="tag">AI Productivity Tools</span>
+        <span class="tag">ERP Basics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-head">
+    <div class="sec-label">Work History</div>
+    <div class="sec-title">Professional Experience</div>
+    <div class="divider"></div>
+  </div>
+  <div class="timeline">
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Operations Intern</div>
+          <div class="exp-date">Aug 2025 – Sep 2025</div>
+        </div>
+        <div class="exp-company">Asarr Clothing · Lahore</div>
+        <ul>
+          <li>Participated in daily production operations, observing denim manufacturing stages including cutting and stitching.</li>
+          <li>Monitored production progress and communicated delays to support workflow coordination.</li>
+          <li>Developed practical insight into production processes and operational bottlenecks in a manufacturing setup.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Marketing &amp; Merchandising Intern</div>
+          <div class="exp-date">Jul 2024 – Aug 2024</div>
+        </div>
+        <div class="exp-company">Nizam Group · Lahore</div>
+        <ul>
+          <li>Developed understanding of marketing &amp; merchandising processes and buyer requirements in garment production.</li>
+          <li>Assisted in reviewing tech packs, learned basic ERP entries and coordinated with production teams.</li>
+          <li>Supported client communication via email and assisted in basic costing and pricing analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Operations Intern</div>
+          <div class="exp-date">Sep 2023 – Oct 2023</div>
+        </div>
+        <div class="exp-company">Burger King — Emporium Mall · Lahore</div>
+        <ul>
+          <li>Acquired practical knowledge of restaurant operations and daily management activities.</li>
+          <li>Learned fundamentals of staff coordination, customer service, and workflow management.</li>
+          <li>Developed understanding of inventory handling, supply processes, and vendor coordination.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Marketing Intern</div>
+          <div class="exp-date">Aug 2023 – Sep 2023</div>
+        </div>
+        <div class="exp-company">Momin Solutions — Johar Town · Lahore</div>
+        <ul>
+          <li>Assisted in digital outreach, lead generation, cold calling, email marketing &amp; client engagement.</li>
+          <li>Supported client acquisition and negotiation efforts, strengthening customer relationship skills.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-head">
+    <div class="sec-label">Portfolio</div>
+    <div class="sec-title">Key Projects</div>
+    <div class="divider"></div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="proj-card">
+      <div class="proj-icon">📊</div>
+      <div class="proj-title">Consumer Behavior &amp; Market Analysis</div>
+      <div class="proj-org">Asarr Clothing</div>
+      <p class="proj-desc">Analyzed manufacturing process, market positioning, and branding approach. Explored marketing strategies including social media, influencer collaborations, and trade promotions. Studied the potential of a Direct-to-Consumer (D2C) model for market expansion.</p>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">🎮</div>
+      <div class="proj-title">Brand Management Project</div>
+      <div class="proj-org">University of Management &amp; Technology</div>
+      <p class="proj-desc">Developed a gaming brand concept focusing on brand identity, positioning, and target audience. Designed visual branding and storytelling elements to create a distinctive brand image. Created a digital launch strategy and concept trailer using AI tools.</p>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">🍜</div>
+      <div class="proj-title">Production &amp; Operations Management</div>
+      <div class="proj-org">Chinese Bowl (Food Venture)</div>
+      <p class="proj-desc">Studied real-life operations by managing a small food venture, focusing on daily workflow and service efficiency. Developed understanding of procurement and supplier coordination to maintain quality and control costs.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-head">
+    <div class="sec-label">Academic Background</div>
+    <div class="sec-title">Education</div>
+    <div class="divider"></div>
+  </div>
+  <div class="edu-card">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-degree">Bachelor of Business Administration <span class="cgpa">CGPA: 2.91 / 4.00</span></div>
+      <div class="edu-uni">University of Management &amp; Technology (UMT)</div>
+      <div class="edu-meta">2022 – 2026 · Lahore, Pakistan</div>
+      <p class="edu-note">Relevant coursework in Business Administration, Management Science, Marketing, and Operations Management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head">
+    <div class="sec-label">Get In Touch</div>
+    <div class="sec-title">Contact Me</div>
+    <div class="divider"></div>
+  </div>
+  <div class="contact-grid">
+    <a href="mailto:moaviaramzann@gmail.com" class="contact-card">
+      <div class="c-icon">✉️</div>
+      <div><div class="c-label">Email</div><div class="c-val">moaviaramzann@gmail.com</div></div>
+    </a>
+    <a href="tel:+923221072676" class="contact-card">
+      <div class="c-icon">📞</div>
+      <div><div class="c-label">Phone</div><div class="c-val">+92-322-1072676</div></div>
+    </a>
+    <a href="https://linkedin.com/in/moavia-ramzan" target="_blank" class="contact-card">
+      <div class="c-icon">🔗</div>
+      <div><div class="c-label">LinkedIn</div><div class="c-val">moavia-ramzan</div></div>
+    </a>
+    <a href="#" class="contact-card">
+      <div class="c-icon">📍</div>
+      <div><div class="c-label">Location</div><div class="c-val">Gajjumatah, Lahore</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Moavia Ramzan · Built with ❤️ · Lahore, Pakistan</p>
+</footer>
+
+</div>
+</body>
+</html>
